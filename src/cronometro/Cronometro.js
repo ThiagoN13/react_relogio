@@ -24,13 +24,14 @@ class Cronometro extends React.Component {
     this.setState({ interval });
   }
 
-  pausarCronometro () {
+  pararCronometro () {
     clearInterval(this.state.interval)
     this.setState({ interval: null })
   }
 
   zerarCronometro () {
-    this.setState({ tempo: 0 });
+    this.pararCronometro()
+    this.setState({ tempo: 0 })
   }
 
   adicionarSerie () {
@@ -58,10 +59,27 @@ class Cronometro extends React.Component {
         </div>
 
         <div className="row">
-          <button type="button" onClick={event => this.iniciarCronometro(event)}>Iniciar</button>
-          <button type="button" onClick={event => this.pausarCronometro(event)}>Pausar</button>
-          <button type="button" onClick={event => this.zerarCronometro(event)}>Zerar</button>
-          <button type="button" onClick={event => this.adicionarSerie(event)}>Série</button>
+          <button
+            type="button"
+            disabled={this.state.interval}
+            onClick={event => this.iniciarCronometro(event)}>
+              { this.state.tempo === 0 ? 'Iniciar' : 'Retomar' }
+          </button>
+          <button
+            type="button"
+            onClick={event => this.pararCronometro(event)}>
+              Parar
+          </button>
+          <button
+            type="button"
+            onClick={event => this.zerarCronometro(event)}>
+              Zerar
+          </button>
+          <button
+            type="button"
+            onClick={event => this.adicionarSerie(event)}>
+              Série
+          </button>
         </div>
 
         <div className="row row-table">
