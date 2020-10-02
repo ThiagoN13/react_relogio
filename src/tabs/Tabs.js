@@ -11,13 +11,13 @@ class Tabs extends React.Component {
     return (
       <div className="Tabs">
         <ul>
-          <li onClick={event => this.props.handleSetActive('relogio')}>
+          <li onClick={event => this.props.handleSetActive('relogio')} className={this.props.active === 'relogio' ? 'active': ''}>
             Relógio
           </li>
-          <li onClick={event => this.props.handleSetActive('cronometro')}>
-            Cronometro
+          <li onClick={event => this.props.handleSetActive('cronometro')} className={this.props.active === 'cronometro' ? 'active': ''}>
+            Cronômetro
           </li>
-          <li onClick={event => this.props.handleSetActive('temporizador')}>
+          <li onClick={event => this.props.handleSetActive('temporizador')} className={this.props.active === 'temporizador' ? 'active': ''}>
             Temporizador
           </li>
         </ul>

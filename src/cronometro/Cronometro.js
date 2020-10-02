@@ -1,12 +1,13 @@
 import React from 'react';
 import './Cronometro.css';
+import moment from 'moment'
 
 class Cronometro extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       interval: null,
-      time: 0,
+      tempo: 0,
       series: []
     }
   }
@@ -17,7 +18,7 @@ class Cronometro extends React.Component {
     }
 
     const interval = setInterval(() => {
-      this.setState({ time: this.state.time + 1 });
+      this.setState({ tempo: this.state.tempo + 1 });
     }, 1000);
 
     this.setState({ interval });
@@ -25,11 +26,24 @@ class Cronometro extends React.Component {
 
   pausarCronometro () {
     clearInterval(this.state.interval)
-    this.setState({ interval: null });
+    this.setState({ interval: null })
   }
 
   zerarCronometro () {
-    this.setState({ time: 0 });
+    this.setState({ tempo: 0 });
+  }
+
+  adicionarSerie () {
+    const series = this.state.series.concat([this.state.tempo])
+
+    this.setState({ series })
+  }
+
+  getLabelTempo (segundos) {
+    return moment()
+      .startOf('day')
+      .seconds(segundos)
+      .format('HH:mm:ss')
   }
 
   render () {
@@ -38,7 +52,7 @@ class Cronometro extends React.Component {
         <div className="row">
           <div className="chronotime">
             <div className="chronotime-text">
-              <span>{this.state.time}</span>
+              <span>{this.getLabelTempo(this.state.tempo)}</span>
             </div>
           </div>
         </div>
@@ -47,14 +61,22 @@ class Cronometro extends React.Component {
           <button type="button" onClick={event => this.iniciarCronometro(event)}>Iniciar</button>
           <button type="button" onClick={event => this.pausarCronometro(event)}>Pausar</button>
           <button type="button" onClick={event => this.zerarCronometro(event)}>Zerar</button>
-          <button type="button">Série</button>
+          <button type="button" onClick={event => this.adicionarSerie(event)}>Série</button>
         </div>
 
-        <div className="row">
+        <div className="row row-table">
           <table>
             <tr>
-              <th></th>
+              <th>Indíce</th>
+              <th>Tempo</th>
             </tr>
+
+            {this.state.series.map((serie, index) => {
+              return <tr>
+                  <td>{index + 1}</td>
+                  <td>{this.getLabelTempo(serie)}</td>
+              </tr>
+            })}
           </table>
         </div>
       </div>
