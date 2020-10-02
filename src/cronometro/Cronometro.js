@@ -1,6 +1,6 @@
-import React from 'react';
-import './Cronometro.css';
+import React from 'react'
 import moment from 'moment'
+import './Cronometro.css'
 
 class Cronometro extends React.Component {
   constructor (props) {
