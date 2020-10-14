@@ -3,6 +3,8 @@ import moment from 'moment-timezone'
 import './Relogio.css'
 
 class Relogio extends React.Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props)
     this.state = {
@@ -10,11 +12,20 @@ class Relogio extends React.Component {
       zones: moment.tz.zonesForCountry('BR'),
       tempo: moment()
     }
+  }
+
+  componentDidMount () {
+    this._isMounted = true
 
     setInterval(() => {
-      this.setState({ tempo: moment() });
-    }, 1000);
+      if (this._isMounted) {
+        this.setState({ tempo: moment() })
+      }
+    }, 1000)
+  }
 
+  componentWillUnmount() {
+    this._isMounted = false
   }
 
   getLabelTempo() {

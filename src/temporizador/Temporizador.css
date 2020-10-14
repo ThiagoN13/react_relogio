@@ -1,55 +1,50 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
-* {
-    box-sizing: border-box;
+.temporizador {
+  width: 400px;
+  height: 400px;
+  background-color: #333333;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
-body {
-    font-family: 'Lato', sans-serif;
+.temporizador-text {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  font-size: 4rem;
+  letter-spacing: 4px;
+  color: #fff;
 }
 
-h1 {
-    letter-spacing: 2px;
-    text-align: center;
-    text-transform: uppercase;
+.temporizador-text span {
+  text-align: center;
+  display: block;
+  width: 100%;
 }
-div{
-    letter-spacing: 2px;
-    text-align: center;
-    text-transform: uppercase;   
+
+.col-center {
+  display: flex;
+  justify-content: center;
 }
 
 .countdown-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .countdown-item {
-    letter-spacing: 2px;
-    text-align: center;
-    text-transform: uppercase; 
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-
-.button-temp{
-    background-color: #3c3c3c;
-    border: none;
-    color: white;
-    padding: 7px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-
+.head-temp {
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 200px;
 }
-.head-temp{
-    letter-spacing: 2px;
-    text-align: center;
-    text-transform: uppercase;
-    margin-top: 200px;
-}
-

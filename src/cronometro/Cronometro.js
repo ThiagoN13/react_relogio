@@ -8,7 +8,7 @@ class Cronometro extends React.Component {
     this.state = {
       interval: null,
       tempo: 0,
-      series: []
+      parciais: []
     }
   }
 
@@ -31,13 +31,13 @@ class Cronometro extends React.Component {
 
   zerarCronometro () {
     this.pararCronometro()
-    this.setState({ tempo: 0 })
+    this.setState({ tempo: 0, parciais: [] })
   }
 
-  adicionarSerie () {
-    const series = this.state.series.concat([this.state.tempo])
+  adicionarParcial () {
+    const parciais = this.state.parciais.concat([this.state.tempo])
 
-    this.setState({ series })
+    this.setState({ parciais })
   }
 
   getLabelTempo (segundos) {
@@ -47,55 +47,77 @@ class Cronometro extends React.Component {
       .format('HH:mm:ss')
   }
 
+  getIntervalo (parcial, index) {
+    const parcialAnterior = this.state.parciais[index - 1]
+
+    if (parcialAnterior === undefined) return '00:00:00'
+
+    const intervalo = moment(parcial)
+      .diff(parcialAnterior)
+
+    return this.getLabelTempo(intervalo)
+  }
+
   render () {
     return (
       <div className="Cronometro">
         <div className="row">
-          <div className="chronotime">
-            <div className="chronotime-text">
-              <span>{this.getLabelTempo(this.state.tempo)}</span>
+          <div className="col">
+            <div className="chronotime">
+              <div className="chronotime-text">
+                <span>{this.getLabelTempo(this.state.tempo)}</span>
+              </div>
+            </div>
+
+            <div className="row">
+              <button
+                type="button"
+                disabled={this.state.interval}
+                onClick={event => this.iniciarCronometro(event)}>
+                  { this.state.tempo === 0 ? 'Iniciar' : 'Retomar' }
+              </button>
+              <button
+                type="button"
+                onClick={event => this.pararCronometro(event)}>
+                  Parar
+              </button>
+              <button
+                type="button"
+                onClick={event => this.zerarCronometro(event)}>
+                  Zerar
+              </button>
+              <button
+                type="button"
+                onClick={event => this.adicionarParcial(event)}>
+                  Parcial
+              </button>
             </div>
           </div>
-        </div>
 
-        <div className="row">
-          <button
-            type="button"
-            disabled={this.state.interval}
-            onClick={event => this.iniciarCronometro(event)}>
-              { this.state.tempo === 0 ? 'Iniciar' : 'Retomar' }
-          </button>
-          <button
-            type="button"
-            onClick={event => this.pararCronometro(event)}>
-              Parar
-          </button>
-          <button
-            type="button"
-            onClick={event => this.zerarCronometro(event)}>
-              Zerar
-          </button>
-          <button
-            type="button"
-            onClick={event => this.adicionarSerie(event)}>
-              Série
-          </button>
-        </div>
-
-        <div className="row row-table">
-          <table>
-            <tr>
-              <th>Indíce</th>
-              <th>Tempo</th>
-            </tr>
-
-            {this.state.series.map((serie, index) => {
-              return <tr>
-                  <td>{index + 1}</td>
-                  <td>{this.getLabelTempo(serie)}</td>
-              </tr>
-            })}
-          </table>
+          <div className="col">
+            <div className="row row-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Indíce</th>
+                    <th>Tempo</th>
+                    <th>Intervalo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.parciais.map((parcial, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{this.getLabelTempo(parcial)}</td>
+                        <td className="interval">{this.getIntervalo(parcial, index)}</td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     );

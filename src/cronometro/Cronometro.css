@@ -1,9 +1,10 @@
 .chronotime {
+  margin: 0 auto;
   width: 400px;
   height: 400px;
   background-color: #333333;
   border-radius: 50%;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .chronotime-text {
@@ -15,7 +16,6 @@
   font-size: 4rem;
   letter-spacing: 4px;
   color: #fff;
-  text-shadow: 0 0 6px darken(#fff, 20%);
 }
 
 .chronotime-text span {
@@ -27,19 +27,23 @@
 .row {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
   margin-bottom: 10px;
 }
 
-.row button {
-  width: 100px;
-  height: 40px;
-  margin-right: 10px;
+.row-table {
+  display: block;
+  margin: 0 0 30px 0;
+  height: calc(100vh - 10vh);
+  overflow-y: auto;
 }
 
-.row-table {
-  margin-bottom: 60px;
+.row-table .interval {
+  color: green;
+}
+
+.col {
+  margin: 0 20px;
 }
 
 table {
@@ -49,8 +53,14 @@ table {
 table td,
 th {
   font-size: 18px;
-  border-bottom: 1px dashed #fff;
+  border-bottom: 1px solid #000000;
   color: #fff;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
+}
+
+/* Tema dark */
+body.white table td,
+th {
+  color: #000000;
 }

@@ -7,6 +7,10 @@ class Tabs extends React.Component {
     this.state = {}
   }
 
+  alterarTema (event) {
+    document.body.classList.toggle('white')
+  }
+
   render () {
     return (
       <div className="Tabs">
@@ -19,6 +23,10 @@ class Tabs extends React.Component {
           </li>
           <li onClick={event => this.props.handleSetActive('temporizador')} className={this.props.active === 'temporizador' ? 'active': ''}>
             Temporizador
+          </li>
+
+          <li className="toggle-theme" onClick={event => this.alterarTema(event)}>
+            Mudar tema
           </li>
         </ul>
       </div>
