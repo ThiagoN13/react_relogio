@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+}
+div{
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;   
+}
+
+.countdown-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase; 
+}
+
+
+.button-temp{
+    background-color: #3c3c3c;
+    border: none;
+    color: white;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+.head-temp{
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 200px;
+}
+
