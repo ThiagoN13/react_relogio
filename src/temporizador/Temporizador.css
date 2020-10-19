@@ -1,4 +1,9 @@
-.temporizador {
+.Temporizador {
+  height: calc(100vh - 55px);
+  overflow: auto;
+}
+
+.temporizador-back {
   width: 400px;
   height: 400px;
   background-color: #333333;
@@ -47,4 +52,8 @@
   text-align: center;
   text-transform: uppercase;
   margin-top: 200px;
+}
+
+.d-none {
+  display: none;
 }

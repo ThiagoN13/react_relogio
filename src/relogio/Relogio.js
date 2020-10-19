@@ -43,8 +43,8 @@ class Relogio extends React.Component {
   render() {
     return (
       <div className="Relogio">
-        <div className="row">
-          <div className="relogio">
+        <div className="row justify-content-center">
+          <div className="relogio-back">
             <div className="relogio-text">
               <span className="relogio-dia">{this.getLabelDia()}</span>
               <span className="relogio-tempo">{this.getLabelTempo()}</span>

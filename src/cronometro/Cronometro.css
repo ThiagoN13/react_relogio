@@ -1,3 +1,8 @@
+.Cronometro {
+  height: calc(100vh - 55px);
+  overflow: auto;
+}
+
 .chronotime {
   margin: 0 auto;
   width: 400px;
@@ -24,26 +29,14 @@
   width: 100%;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
 .row-table {
   display: block;
-  margin: 0 0 30px 0;
   height: calc(100vh - 10vh);
   overflow-y: auto;
 }
 
 .row-table .interval {
   color: green;
-}
-
-.col {
-  margin: 0 20px;
 }
 
 table {
@@ -59,8 +52,18 @@ th {
   text-align: center;
 }
 
+table thead {
+  position: sticky;
+  top: 0;
+  background-color: rgba(0,0,0,.8);
+  display: inline-block;
+}
+
+table tbody {
+  display: inline;
+}
+
 /* Tema dark */
-body.white table td,
-th {
+body.white table td {
   color: #000000;
 }

@@ -69,7 +69,7 @@ class Cronometro extends React.Component {
               </div>
             </div>
 
-            <div className="row">
+            <div className="row p-5px">
               <button
                 type="button"
                 disabled={this.state.interval}

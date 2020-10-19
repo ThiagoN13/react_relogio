@@ -1,4 +1,9 @@
-.relogio {
+.Relogio {
+  height: calc(100vh - 55px);
+  overflow: auto;
+}
+
+.relogio-back {
   display: flex;
   align-items: center;
   text-align: center;

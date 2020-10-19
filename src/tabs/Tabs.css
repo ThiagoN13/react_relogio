@@ -1,7 +1,8 @@
 .Tabs {
+  max-height: 55px;
   background-color: #333333;
   width: 100%;
-  position: fixed;
+  position: sticky;
   right: 0;
   text-align: center;
   bottom: 0;
